@@ -34,6 +34,41 @@ header {
     padding: 10px;
 }
 
+.product_in_cart {
+    position: absolute;
+    top: 55px;
+    right: 130px;
+    background-color: white;
+    border: 2px solid #C4C4C4;
+    color: black;
+}
+
+.invisible {
+    display: none;
+}
+
+.cart_item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.cart_item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.cart_item p {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.cart_item p:not(:last-child) {
+    margin-right: 20px;
+}
+
 .products {
     display: flex;
     justify-content: space-between;
