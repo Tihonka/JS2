@@ -45,8 +45,6 @@ header {
     border: none;
 }
 
-<<<<<<< Updated upstream
-=======
 .product_in_cart {
     position: absolute;
     top: 55px;
@@ -78,7 +76,6 @@ header {
     margin-right: 20px;
 }
 
->>>>>>> Stashed changes
 .products {
     display: flex;
     justify-content: space-between;
