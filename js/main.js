@@ -10,14 +10,15 @@ const app = new Vue({
         filtered: [],
         imgCatalog: 'https://via.placeholder.com/200x150',
         userSearch: '',
-        show: false
+        show: false,
+        error: false
     },
     methods: {
         getJson(url){
             return fetch(url)
                 .then(result => result.json())
                 .catch(error => {
-                    console.log(error)
+                    this.error = true
                 })
         },
         addProduct(item){
@@ -54,26 +55,26 @@ const app = new Vue({
         }
     },
     mounted(){
-        this.getJson(`{API + this.cartUrl}`)
+        this.getJson(`${API}/getBasket.json`)
         .then(data =>{
             for (let item of data.contents){
-                this.cartItems.push(item);
+                this.$data.cartItems.push(item);
             }
         });
        this.getJson(`${API + this.catalogUrl}`)
            .then(data => {
                for(let el of data){
-                   this.products.push(el);
-                   this.filtered.push(el);
+                   this.$data.products.push(el);
+                   this.$data.filtered.push(el);
                }
            });
-        this.getJson(`getProducts.json`)
-            .then(data => {
-                for(let el of data){
-                    this.products.push(el);
-                    this.filtered.push(el);
-                }
-            })
+        // this.getJson(`getProducts.json`)
+        //     .then(data => {
+        //         for(let el of data){
+        //             this.products.push(el);
+        //             this.filtered.push(el);
+        //         }
+        //     })
     }
 })
 
