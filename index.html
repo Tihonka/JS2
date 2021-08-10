@@ -8,17 +8,52 @@
 </head>
 
 <body>
-    <header>
-        <div class="container header">
-            <button class="btn-cart" type="button">Корзина</button>
-            <div class="product_in_cart invisible">
+    <div id="app">
+        <header>
+            <div class="container header">
+                <filtercomp></filtercomp>
+
+                <button class="btn-cart" type="button" @click="show = !show">Корзина</button>
+
+                <error v-show="error"></error>
+
+                <!-- <div class="product_in_cart" v-show="show">
+                    <p v-if="!cartItems.length">Корзина пуста</p>
+                    <div class=cart_item v-for="item of cartItems" :key="item.id_product">
+                        <p>{{ item.product_name }}</p>
+                        <p>{{ item.quantity }}</p>
+                        <p>${{ item.price }}</p>
+                        <p>{{ item.quantity*item.price }}</p>
+                        <button class="del" @click="remove(item)">&times;</button>
+                    </div>
+                </div> -->
+                <cart :cart-items="cartItems" :visibility="show" @remove="remove"></cart>
             </div>
-        </div>
-    </header>
-    <main>
-        <div class="products container"></div>
-    </main>
-    <footer></footer>
+        </header>
+        <main>
+            <!-- <div class="products container">
+                <div class="product-item" v-for="product of filtered" :key="product.id_product">
+                    <img :src="imgCatalog" alt="Some img">
+                    <div class="desc">
+                        <h3>{{ product.product_name }}</h3>
+                        <p>{{ product.price }} $</p>
+                        <button class="buy-btn" @click="addProduct(product)">Купить</button>
+                    </div>
+                </div>
+            </div> -->
+            <products :products="filtered" :img="imgCatalog" @add-product="addProduct"></products>
+        </main>
+
+        <footer></footer>
+    </div>
+    <script src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/FilterComponent.js"></script>
+    <script src="js/ErrorComponent.js"></script>
+    <script src="js/CartComponent.js"></script>
+    <script src="js/ProductComponent.js"></script>
     <script src="js/main.js"></script>
 </body>
 
